@@ -1,8 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-// const uri = process.env.MONGODB_CONECTION_STRING;
-const uri = "mongodb+srv://minimizeadmin:almondMilk0@minimize-cluster.zbdzeky.mongodb.net/?retryWrites=true&w=majority"
+const uri = process.env.MONGODB_CONNECTION_STRING;
 
 function setupServer() {
     const app = express();
