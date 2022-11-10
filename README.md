@@ -1,7 +1,7 @@
 # Minimize
 > A decluttering list-sorting application.
 
-This application aims to help you sort through your items 
+This application aims to help you sort through your items. Tinder-style.
 
 ## Installation
 
