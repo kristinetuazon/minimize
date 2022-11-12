@@ -6,6 +6,8 @@ import createEmotionCache from "../createEmotionCache";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "@fontsource/quattrocento"
 import "@fontsource/quattrocento-sans"
+import {useEffect} from "react";
+
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -14,9 +16,15 @@ const generalTheme = createTheme({
     type: 'light',
     primary: {
       main: '#7f867b',
+      light: '#989E95',
+      dark: '#585D56',
+      contrastText: '#FFFFFF'
     },
     secondary: {
       main: '#906449',
+      light: '#A6836D',
+      dark: '#644633',
+      contrastText: '#FFFFFF'
     },
     background: {
       default: '#e3e4e0',
@@ -32,6 +40,14 @@ const generalTheme = createTheme({
 });
 
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }) {
+
+  useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+        jssStyles.parentElement.removeChild(jssStyles);
+    }
+}, []);
+
   return (
     <>
      <CacheProvider value={emotionCache}>

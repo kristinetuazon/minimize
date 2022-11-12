@@ -3,8 +3,7 @@ import {
   Box,
   Grid,
   Typography,
-  Input,
-  InputLabel,
+  TextField,
   FormHelperText,
   FormControl,
   Link
@@ -43,9 +42,11 @@ export default function Login({setRegister}) {
       flexDirection: "column",
       alignItems: "center",
       height: 1, 
+      width: 1
     }}>
       <Box
         sx={{
+          boxShadow: 3,
           my: 15,
           mx: 7,
           display: "flex",
@@ -54,17 +55,16 @@ export default function Login({setRegister}) {
         }}
       >
         <br></br>
-        <Typography component="h1" variant="h5" sx={{ mt: 3, mb: 2 }}>
-          Sign in
+        <Typography component="h1" variant="h5" sx={{ mt: 3, mb: 2 }} color="primary.dark">
+          Sign In
         </Typography>
         <FormControl>
-          <InputLabel htmlFor="email">Email address</InputLabel>
-          <Input
+          <TextField
             id="email"
             required
             fullWidth
             autoFocus
-            label="Outlined"
+            label="E-mail"
             aria-describedby="email-address-input"
             value={email} 
             onChange= {(e)=> setEmail(e.target.value)} 
@@ -76,13 +76,13 @@ export default function Login({setRegister}) {
 
         <br></br>
         <FormControl>
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <Input
+          <TextField
+          label="Password"
+          variant="outlined"
             id="outlined-password-input"
             required
             fullWidth
             autoFocus
-            label="Password"
             aria-describedby="password-input"
             value={password}
             onChange = {(e) => setPassword(e.target.value)}
@@ -95,7 +95,7 @@ export default function Login({setRegister}) {
         <Button
           type="submit"
           variant="contained"
-          sx={{ mt: 4, mb: 2 }}
+          sx={{ mt: 4, mb: 2, width: 1/2}}
           onClick={() => signInWithEmailAndPassword(email,password)
           }
         >
@@ -104,9 +104,9 @@ export default function Login({setRegister}) {
         <br></br>
         <Button
           type="submit"
-          variant="contained"
+          variant="outlined"
           endIcon={<GoogleIcon/>}
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, width: 1/2}}
           onClick={signInWithGoogle}
         >
           Sign In with 
@@ -124,14 +124,14 @@ export default function Login({setRegister}) {
             <br></br>
           <Grid container>
             <Grid item xs sx={{ mx: 1 }}>
-              <Link component={Link} to="/Reset">
+              <Link cursor="pointer" component={Link} to="/Reset">
               <Typography color="secondary" variant="body2" sx={{ mt: 1, mb: 2 }}>
               Forgot password?
              </Typography>
               </Link>
             </Grid>
             <Grid item xs sx={{ mx: 1 }}>
-            <Link onClick={()=>{setRegister(true)}} >
+            <Link cursor="pointer" onClick={()=> {setRegister(true)}}>
               <Typography color="secondary" variant="body2">
               Do not have an account? Sign up.
              </Typography>

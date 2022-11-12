@@ -2,14 +2,18 @@ import React from "react";
 import {
   Box,
   Toolbar,
-  IconButton,
   Menu,
   MenuItem,
   AppBar,
+  MenuList,
+  Stack,
+  IconButton
 } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
 // import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import { logout } from "../firebase-config";
+import Image from 'next/image'
+import logo from '../public/logo-long.png'
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,7 +33,6 @@ export default function NavBar() {
             <IconButton
               size="large"
               edge="start"
-              color="secondary"
               aria-label="menu"
               sx={{ mr: 2 }}
               aria-controls={open ? "basic-menu" : undefined}
@@ -49,17 +52,29 @@ export default function NavBar() {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  return logout();
-                }}
-              >
-                Logout
-              </MenuItem>
+              <MenuList>
+                <Stack direction="column" sx={{ mx: 2 }}>
+                  <MenuItem>Profile</MenuItem>
+                  <MenuItem>My account</MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      return logout();
+                    }}
+                  >
+                    Logout
+                  </MenuItem>
+                </Stack>
+              </MenuList>
             </Menu>
+
+            <Image
+            src={logo}
+            alt="logo"
+            width={200}
+            height={100}
+          />
+
           </Toolbar>
         </AppBar>
       </Box>

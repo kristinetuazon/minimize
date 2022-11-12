@@ -18,8 +18,6 @@ import {
 } from "firebase/firestore";
 // require('dotenv').config({path: '../.env.local'});
 
-
-
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -30,11 +28,13 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
 };
 
-if (!firebase.apps.length) {
-   initializeApp({});
-}else {
-   firebase.app(); // if already initialized, use that one
-}
+
+
+// if (!firebase.apps.length) {
+//    initializeApp({});
+// }else {
+//    firebase.app(); // if already initialized, use that one
+// }
 
  const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
