@@ -36,7 +36,6 @@ export default function Register({setRegister}) {
   
   return (
     <>
-    <Navbar />
       <Box
         sx={{
           boxShadow: 3,
@@ -132,7 +131,7 @@ export default function Register({setRegister}) {
           <Grid container>
             <Grid item xs sx={{ mx: 2 }}>
                <Typography color="secondary" variant="body2" >
-                  Already have an account? Login here.
+                <Link href="/">  Already have an account? Login here. </Link>
                 </Typography>
             </Grid>
           </Grid>

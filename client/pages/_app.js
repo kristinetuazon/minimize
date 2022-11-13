@@ -9,6 +9,7 @@ import "@fontsource/quattrocento-sans";
 import { useEffect } from "react";
 import "../styles/reset.css";
 import "../styles/globals.css";
+import Navbar from "../components/Navbar.js";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -60,6 +61,7 @@ function MyApp({
         </Head>
         <ThemeProvider theme={generalTheme}>
           <CssBaseline />
+          <Navbar />
           <Component {...pageProps} />
         </ThemeProvider>
       </CacheProvider>

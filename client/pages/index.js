@@ -1,5 +1,5 @@
 //minimize.com/
-import Navbar from "../components/Navbar.js";
+
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -10,11 +10,11 @@ import {
   TextField,
 } from "@mui/material";
 import { Button, Paper } from "@material-ui/core";
-// import {
-//   auth,
-//   signInWithEmailAndPassword,
-//   signInWithGoogle,
-// } from "../firebase-config";
+import {
+  auth,
+  signInWithEmailAndPassword,
+  signInWithGoogle,
+} from "../firebase-config";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -23,11 +23,10 @@ import { grey } from "@mui/material/colors";
 export default function HomePage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+   const [user, loading, error] = useAuthState(auth);
 
   return (
     <>
-      <Navbar />
       <Box
         sx={{
           boxShadow: 3,
@@ -123,7 +122,7 @@ export default function HomePage() {
             </Grid>
             <Grid item xs sx={{ mx: 1 }}>
               <Typography color="secondary" variant="body2">
-                Do not have an account? Sign up.
+              <Link href="/register"> Do not have an account? Sign up.</Link>
               </Typography>
             </Grid>
           </Grid>
