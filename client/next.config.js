@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
-const dotenv = require('dotenv').config({path: "../.env.local"})
+const dotenv = require('dotenv').config({})
 
 const nextConfig = {
   reactStrictMode: true,
-  webpack5: true,
   env : {
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,

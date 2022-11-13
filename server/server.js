@@ -27,12 +27,12 @@ function setupServer() {
 
 
 
-  app.post('/api/auth/register', async(req, res) => {
-    const {email, password} = req.body
-    const newUser = await createUserWithEmailAndPassword(auth, email, password);
-    //console.log(newUser);
-    res.json({"payload": newUser}).status(200);
-  })
+  // app.post('/api/auth/register', async(req, res) => {
+  //   const {email, password} = req.body
+  //   const newUser = await createUserWithEmailAndPassword(auth, email, password);
+  //   //console.log(newUser);
+  //   res.json({"payload": newUser}).status(200);
+  // })
 
 
   return app;
