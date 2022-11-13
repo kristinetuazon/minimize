@@ -10,6 +10,7 @@ import {
   IconButton,
 } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
+import Link from "next/link";
 // import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import { logout } from "../firebase-config";
 import Image from "next/image";
@@ -55,8 +56,8 @@ export default function NavBar() {
             >
               <MenuList>
                 <Stack direction="column" sx={{ mx: 2 }}>
-                  <MenuItem>Profile</MenuItem>
-                  <MenuItem>My account</MenuItem>
+                  <MenuItem><Link href="/dashboard">My account</Link></MenuItem>
+                  <MenuItem>Sort</MenuItem>
                   <MenuItem
                     onClick={() => {
                       handleClose();

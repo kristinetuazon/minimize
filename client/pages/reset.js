@@ -16,7 +16,7 @@ import Navbar from "../components/Navbar";
 
 export default function Reset() {
   const [email, setEmail] = useState("");
-  const [user, loading] = useAuthState(auth);
+  // const [user, loading] = useAuthState(auth);
 
   // useEffect(() => {
   //   if (loading) return;
@@ -25,7 +25,6 @@ export default function Reset() {
 
   return (
     <>
-      <Navbar />
       <div id="wrapper__resetpass">
         <Grid
           component={Paper}
