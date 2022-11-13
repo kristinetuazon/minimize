@@ -4,11 +4,6 @@ const dotenv = require('dotenv').config({path: "../.env.local"})
 const nextConfig = {
   reactStrictMode: true,
   webpack5: true,
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false };
-
-    return config;
-  },
   env : {
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
