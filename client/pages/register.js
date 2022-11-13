@@ -5,10 +5,9 @@ import {
   Typography,
   TextField,
   FormHelperText,
-  FormControl,
-  Link
+  FormControl
 } from "@mui/material";
-import NextLink from 'next/link'
+import Link from 'next/link'
 import { Button, Paper } from "@material-ui/core";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
@@ -17,6 +16,8 @@ import {
   signInWithGoogle,
 } from "../firebase-config";
 import GoogleIcon from "@mui/icons-material/Google";
+import { grey } from '@mui/material/colors';
+import Navbar from '../components/Navbar'
 
 export default function Register({setRegister}) {
   const [email, setEmail] = useState("");
@@ -34,14 +35,8 @@ export default function Register({setRegister}) {
   // }, [user, loading, history]);
   
   return (
-    <Grid component={Paper} sx={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      backgroundColor:"primary",
-      height: 1, 
-      width: 1
-    }} >
+    <>
+    <Navbar />
       <Box
         sx={{
           boxShadow: 3,
@@ -51,6 +46,7 @@ export default function Register({setRegister}) {
           flexDirection: "column",
           alignItems: "center",
         }}
+        backgroundColor= {grey[50]}
       >
         <br></br>
         <Typography component="h1" variant="h5" color="primary.dark">
@@ -93,7 +89,6 @@ export default function Register({setRegister}) {
           <TextField
             id="outlined-password-input"
             required
-            fullWidth
             autoFocus
             label="Password"
             aria-describedby="password-input"
@@ -107,7 +102,6 @@ export default function Register({setRegister}) {
         <br></br>
         <Button
           type="submit"
-          fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2, width: 1/2}}
           onClick={register}
@@ -137,14 +131,14 @@ export default function Register({setRegister}) {
           <br></br>
           <Grid container>
             <Grid item xs sx={{ mx: 2 }}>
-               <Link cursor="pointer"> <Typography onClick={()=>{setRegister(false)}} color="secondary" variant="body2" >
+               <Typography color="secondary" variant="body2" >
                   Already have an account? Login here.
-                </Typography> </Link> 
+                </Typography>
             </Grid>
           </Grid>
         </Box>
         <br></br>
       </Box>
-    </Grid>
+      </>
   )
 }
