@@ -7,13 +7,13 @@ import {
   AppBar,
   MenuList,
   Stack,
-  IconButton
+  IconButton,
 } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
 // import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import { logout } from "../firebase-config";
-import Image from 'next/image'
-import logo from '../public/logo-long.png'
+import Image from "next/image";
+import logo from "../public/logo-long.png";
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -30,6 +30,7 @@ export default function NavBar() {
       <Box id="nav__box" sx={{ flexGrow: 4 }}>
         <AppBar style={{ background: "transparent", boxShadow: "none" }}>
           <Toolbar>
+            <Image src={logo} alt="logo" width={150} />
             <IconButton
               size="large"
               edge="start"
@@ -67,14 +68,6 @@ export default function NavBar() {
                 </Stack>
               </MenuList>
             </Menu>
-
-            <Image
-            src={logo}
-            alt="logo"
-            width={200}
-            height={100}
-          />
-
           </Toolbar>
         </AppBar>
       </Box>
