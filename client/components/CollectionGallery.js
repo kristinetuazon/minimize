@@ -22,7 +22,7 @@ const card = (
             [Collection ID]
           </Typography>
           <Typography variant="h5" component="div">
-            "Name of Collection"
+            Name of Collection
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             [Collection Detals]
