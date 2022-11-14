@@ -10,6 +10,7 @@ import {
 import ListIcon from "@mui/icons-material/List";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import CollectionGallery from "../../components/CollectionGallery";
+import List from "../../components/List";
 
 export default function Dashboard() {
   return (
@@ -51,7 +52,7 @@ export default function Dashboard() {
                 width: 1,
               }}
             >
-              {/* <CollectionGallery /> */}
+               <CollectionGallery /> 
             </Paper>
           </Grid>
 
@@ -68,7 +69,7 @@ export default function Dashboard() {
               <IconButton>
                 <ListIcon fontSize="medium" />
               </IconButton>
-              <Typography variant="h5"> List </Typography>
+              <Typography variant="h5"> List Preview </Typography>
             </Box>
             <Paper
               sx={{
@@ -80,9 +81,7 @@ export default function Dashboard() {
                 width: 1,
               }}
             >
-              <Typography align="center" variant="h6">
-                Welcome, what do you want to do today?
-              </Typography>{" "}
+             <List />
             </Paper>
           </Grid>
         </Grid>
