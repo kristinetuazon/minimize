@@ -22,3 +22,14 @@
     background-color: #E3E4E0;
 }
 
+#wrapper__dashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+    padding-top: 8%;
+    padding-right: 3%;
+    background-color: #E3E4E0;
+}
+
