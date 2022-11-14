@@ -6,6 +6,7 @@ const collectionOfLists = new Schema({
   nameOfCollection: String,
   userEmail: String,
   uId: String,
+  listDescription: String,
   initialList: [String],
   deletedIndex: [Number],
   finalIndex: [Number],

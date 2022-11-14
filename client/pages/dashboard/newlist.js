@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Box,
   Grid,
@@ -12,20 +12,39 @@ import {
   ListItemText,
   Avatar,
   ListItemAvatar,
+  Input,
 } from "@mui/material";
 import { Button, Paper } from "@material-ui/core";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  );
-}
 
 export default function NewList() {
+  const [listName, setListName] = useState('');
+  const [description, setDescription] = useState('');
+  const [item, setItem] = useState('');
+  const [listOfItems, setListOfItems] = useState([]);
+  const listNameRef = useRef("");
+  const descriptionRef = useRef("");
+  const itemRef = useRef ("");
+  
+  console.log(listOfItems)
+  
+  function generate(element) {
+    return listOfItems.map((value, index) =>
+      React.cloneElement(element, {
+        itemName: value,
+        keyIndex: index
+      })
+    );
+  }
+ function handleAdd(e) {
+  console.log(itemRef.current)
+  e.preventDefault();
+  
+ }
+
+ console.log(handleAdd)
 
   return (
     <>
@@ -53,7 +72,10 @@ export default function NewList() {
             <br></br>
             <FormControl>
               <TextField
-                id="email"
+              id="list-name"
+              ref={listNameRef}
+              value = {listName}
+              onChange = {e => setListName(e.target.value)}
                 required
                 fullWidth
                 autoFocus
@@ -69,6 +91,9 @@ export default function NewList() {
 
               <TextField
                 id="description"
+                ref={descriptionRef}
+                value = {description}
+                onChange = {e => setDescription(e.target.value)}
                 fullWidth
                 autoFocus
                 multiline
@@ -83,6 +108,28 @@ export default function NewList() {
             </FormControl>
 
             <br></br>
+            <Grid container>
+              <Grid item xs>
+                {" "}
+                <Input
+                  placeholder="Item"
+                  ref={itemRef}
+                  value = {item}
+                  onChange = {e => setItem(e.target.value)}
+                  inputProps={{
+                    "aria-label": "Description",
+                  }}
+                  style={{ width: "90%" }}
+                />
+              </Grid>
+
+              <Grid item>
+                {" "}
+                <IconButton sx={{ mx: 2 }} type="submit" onClick={()=>{listOfItems.push(item)}}>
+                  <AddCircleOutlineIcon/>
+                </IconButton>
+              </Grid>
+            </Grid>
 
             <Paper>
               <List>
@@ -97,7 +144,7 @@ export default function NewList() {
                     <IconButton sx={{ mx: 2 }}>
                       <AddCircleOutlineIcon />
                     </IconButton>
-                    <ListItemText primary="Single-line item" />
+                    <ListItemText/>
                   </ListItem>
                 )}
               </List>
