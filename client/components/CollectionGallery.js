@@ -15,8 +15,8 @@ import AddIcon from "@mui/icons-material/Add";
 
 const card = (
   <React.Fragment>
-    <Box sx={{ minWidth: 100 }}>
-      <Card variant="outlined" color="secondary.light">
+    <Box sx={{ minWidth: 100}}>
+      <Card variant="outlined" sx={{bgcolor:"background.default"}}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             [Collection ID]
@@ -50,6 +50,7 @@ const addACollection = (
         flexDirection: "column",
         alignItems: "center",
         alignContent: "center",
+        bgcolor:"background.default"
       }}
     >
       <CardContent
@@ -81,7 +82,7 @@ export default function CollectionGallery() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        <Grid item xs={2} sm={4} md={4} color="secondary.light">
+        <Grid item xs={2} sm={4} md={4}>
           {addACollection}
         </Grid>
         <Grid item xs={2} sm={4} md={4}>
