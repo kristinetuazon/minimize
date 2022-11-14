@@ -25,8 +25,7 @@ function generate(element) {
   );
 }
 
-export default function newList() {
-  const [dense, setDense] = React.useState(false);
+export default function NewList() {
 
   return (
     <>
