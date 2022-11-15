@@ -27,7 +27,7 @@ export default function Sort() {
         
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Okay! Let's get started ✨</Button>
+          <Button onClick={handleClose}>Okay! Let me START! ✨</Button>
         </DialogActions>
       </Dialog>
     </div>
