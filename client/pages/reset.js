@@ -12,16 +12,17 @@ import {
 import { Button, Paper } from "@material-ui/core";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, sendPasswordReset } from "../firebase-config";
-import Navbar from "../components/Navbar";
+import { useRouter } from "next/router";
 
 export default function Reset() {
   const [email, setEmail] = useState("");
-  // const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   if (loading) return;
-  //   if (user) navigate("/reset");
-  // }, [user, loading]);
+  useEffect(() => {
+    if (loading) return;
+    if (user) router.push("/reset");
+  }, [user, loading, router]);
 
   return (
     <>
@@ -73,7 +74,7 @@ export default function Reset() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => sendPasswordReset(email)}
+              onClick={() => sendPasswordReset(auth, email)}
             >
               Send Password Reset Email
             </Button>

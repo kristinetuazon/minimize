@@ -57,7 +57,7 @@ function MyApp({
 
   return (
     <>
-    <AuthContextProvider>
+    {/* <AuthContextProvider> */}
       <CacheProvider value={emotionCache}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -68,7 +68,7 @@ function MyApp({
           <Component {...pageProps} />
         </ThemeProvider>
       </CacheProvider>
-      </AuthContextProvider>
+      {/* </AuthContextProvider> */}
     </>
   );
 }

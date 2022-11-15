@@ -17,38 +17,55 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import ListIcon from "@mui/icons-material/List";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../firebase-config";
 import Image from "next/image";
 import logo from "../public/logo-long.png";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase-config";
+import { useRouter } from "next/router"
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
 
   return (
     <>
-      <div id="nav__wrapper">
-        <Box id="nav__box" sx={{ flexGrow: 4 }}>
-          <AppBar style={{ background: "transparent", boxShadow: "none" }}>
-            <Toolbar>
-              <Image src={logo} alt="logo" width={150} />
-              <IconButton
-                size="large"
-                edge="start"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-                aria-controls={open ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={() => setOpen(true)}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-        </Box>
-      </div>
+      {user ? (
+        <div id="nav__wrapper">
+          <Box id="nav__box" sx={{ flexGrow: 4 }}>
+            <AppBar style={{ background: "transparent", boxShadow: "none" }}>
+              <Toolbar>
+                <Image src={logo} alt="logo" width={150} />
+                <IconButton
+                  size="large"
+                  edge="start"
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={() => setOpen(true)}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+          </Box>
+        </div>
+      ) : (
+        <div id="nav__wrapper">
+          <Box id="nav__box" sx={{ flexGrow: 4 }}>
+            <AppBar style={{ background: "transparent", boxShadow: "none" }}>
+              <Toolbar>
+                <Image src={logo} alt="logo" width={150} />
+              </Toolbar>
+            </AppBar>
+          </Box>
+        </div>
+      )}
 
       <div>
         <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
@@ -85,6 +102,7 @@ export default function NavBar() {
                 <MenuItem
                   onClick={() => {
                     setOpen(false);
+                    router.push('/');
                     return logout();
                   }}
                 >
