@@ -125,12 +125,12 @@ export default function HomePage() {
                 variant="body2"
                 sx={{ mt: 1, mb: 2 }}
               >
-                <Link href="/reset">Forgot password?</Link>
+                <Link href="/reset" id="link">Forgot password?</Link>
               </Typography>
             </Grid>
             <Grid item xs sx={{ mx: 1 }}>
               <Typography color="secondary" variant="body2">
-              <Link href="/register"> Do not have an account? Sign up.</Link>
+              <Link href="/register" id="link"> Do not have an account? Sign up.</Link>
               </Typography>
             </Grid>
           </Grid>

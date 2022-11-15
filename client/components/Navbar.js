@@ -38,8 +38,8 @@ export default function NavBar() {
           <Box id="nav__box" sx={{ flexGrow: 4 }}>
             <AppBar style={{ background: "transparent", boxShadow: "none" }}>
               <Toolbar>
-                <Image src={logo} alt="logo" width={150} />
-                <IconButton
+                <Link href="/dashboard" id="link" ><Image src={logo} alt="logo" width={150} /></Link>
+               <IconButton
                   size="large"
                   edge="start"
                   aria-label="menu"
@@ -60,7 +60,7 @@ export default function NavBar() {
           <Box id="nav__box" sx={{ flexGrow: 4 }}>
             <AppBar style={{ background: "transparent", boxShadow: "none" }}>
               <Toolbar>
-                <Image src={logo} alt="logo" width={150} />
+              <Link href="/" id="link"><Image src={logo} alt="logo" width={150} /></Link>
               </Toolbar>
             </AppBar>
           </Box>
@@ -87,18 +87,22 @@ export default function NavBar() {
 
             <MenuList>
               <Stack direction="column" sx={{ mx: 2 }}>
+              <Link href="/dashboard/myaccount" id="link"> 
                 <MenuItem>
                   <ListItemIcon>
                     <AccountCircleIcon fontSize="small" />
                   </ListItemIcon>
                   <ListItemText>My Account</ListItemText>
                 </MenuItem>
+                </Link>
+                <Link href="/dashboard/newlist" id="link"> 
                 <MenuItem>
                   <ListItemIcon>
                     <ListIcon fontSize="small" />
                   </ListItemIcon>
                   <ListItemText>New List</ListItemText>
                 </MenuItem>
+                  </Link>
                 <MenuItem
                   onClick={() => {
                     setOpen(false);

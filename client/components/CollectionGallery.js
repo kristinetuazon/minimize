@@ -11,12 +11,13 @@ import {
   Button,
   IconButton,
 } from "@mui/material/";
+import Link from "next/link";
 import AddIcon from "@mui/icons-material/Add";
 
 const card = (
   <React.Fragment>
-    <Box sx={{ minWidth: 100}}>
-      <Card variant="outlined" sx={{bgcolor:"background.default"}}>
+    <Box sx={{ minWidth: 100 }}>
+      <Card variant="outlined" sx={{ bgcolor: "background.default" }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             [Collection ID]
@@ -27,20 +28,17 @@ const card = (
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             [Collection Detals]
           </Typography>
-          <Typography variant="body2">
-            [OTHER THINGS]
-            <br />
-          </Typography>
+          <br />
         </CardContent>
         <CardActions>
-          <Button size="small">Preview</Button>
+          <Button size="small">Edit list</Button>
         </CardActions>
       </Card>
     </Box>
   </React.Fragment>
 );
 
-const addACollection = (
+const addAList = (
   <>
     <Card
       sx={{
@@ -50,12 +48,12 @@ const addACollection = (
         flexDirection: "column",
         alignItems: "center",
         alignContent: "center",
-        bgcolor:"background.default"
+        bgcolor: "background.default",
       }}
     >
       <CardContent
         sx={{
-          my: 3,
+          my: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -65,10 +63,10 @@ const addACollection = (
         <IconButton>
           <AddIcon fontSize="large" />
         </IconButton>
-        <Typography variant="h6"> a New List </Typography>
+        {/* <Typography variant="h6"> a New List </Typography> */}
       </CardContent>
       <CardActions>
-        <Button size="small">Start</Button>
+        <Button size="small">ADD A NEW LIST</Button>
       </CardActions>
     </Card>
   </>
@@ -79,13 +77,15 @@ export default function CollectionGallery() {
     <>
       <Grid
         container
-        sx={{ position: "relative",
-        overflow: "auto",}}
+        sx={{ position: "relative", overflow: "auto" }}
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         <Grid item xs={2} sm={4} md={4}>
-          {addACollection}
+          <Link href="/dashboard/newlist" id="link">
+            {" "}
+            {addAList}
+          </Link>
         </Grid>
         <Grid item xs={2} sm={4} md={4}>
           {card}

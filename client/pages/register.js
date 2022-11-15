@@ -133,7 +133,7 @@ export default function Register({setRegister}) {
           <Grid container>
             <Grid item xs sx={{ mx: 2 }}>
                <Typography color="secondary" variant="body2" >
-                <Link href="/">  Already have an account? Login here. </Link>
+                <Link href="/" id="link">  Already have an account? Login here. </Link>
                 </Typography>
             </Grid>
           </Grid>
