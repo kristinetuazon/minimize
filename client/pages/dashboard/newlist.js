@@ -8,19 +8,14 @@ import {
   FormControl,
   TextField,
   List,
-  ListItem,
-  ListItemText,
-  Avatar,
-  ListItemAvatar,
   Input,
 } from "@mui/material";
 import { Button, Paper } from "@material-ui/core";
 import ItemList from "../../components/ItemList";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
-import Link from "next/link";
 import { useRouter } from "next/router"
-// const LOCAL_STORAGE_KEY = 'minimize.item'
+import { auth, onAuthStateChanged } from "../../firebase-config";
 
 export default function NewList() {
   const [listName, setListName] = useState("");
@@ -31,6 +26,25 @@ export default function NewList() {
   const descriptionRef = useRef("");
   const itemRef = useRef("");
   const router = useRouter();
+
+  const [userInfo, setUserInfo] = useState({});
+  
+  useEffect(() => {
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
+        if (userInfo) {
+            setUserInfo({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photo: user.photoURL
+            })
+        }else{
+            setUserInfo(Null);
+        }
+    })
+    return () => unsuscribe()
+},[])
+
 
   function handleDelete({ id }) {
     setListOfItems(listOfItems.filter((item) => item.id !== id));
@@ -53,6 +67,8 @@ export default function NewList() {
       },
       body: JSON.stringify({
         nameOfList: listName,
+        userEmail: userInfo.email,
+        uId: userInfo.uid,
         listDescription: description,
         initialList: listOfItems,
       }),
