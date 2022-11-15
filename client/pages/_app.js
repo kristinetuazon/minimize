@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import "../styles/reset.css";
 import "../styles/globals.css";
 import Navbar from "../components/Navbar.js";
+import { AuthContextProvider } from "../context/AuthContext";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -55,6 +56,7 @@ function MyApp({
 
   return (
     <>
+    <AuthContextProvider>
       <CacheProvider value={emotionCache}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -65,6 +67,7 @@ function MyApp({
           <Component {...pageProps} />
         </ThemeProvider>
       </CacheProvider>
+      </AuthContextProvider>
     </>
   );
 }
