@@ -65,7 +65,7 @@ const addACollection = (
         <IconButton>
           <AddIcon fontSize="large" />
         </IconButton>
-        <Typography variant="h6"> a Collection </Typography>
+        <Typography variant="h6"> a New List </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Start</Button>

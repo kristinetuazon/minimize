@@ -15,6 +15,7 @@ import {
 } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
+import ListIcon from "@mui/icons-material/List";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -77,9 +78,9 @@ export default function NavBar() {
                 </MenuItem>
                 <MenuItem>
                   <ListItemIcon>
-                    <SyncAltIcon fontSize="small" />
+                    <ListIcon fontSize="small" />
                   </ListItemIcon>
-                  <ListItemText>Sort</ListItemText>
+                  <ListItemText>New List</ListItemText>
                 </MenuItem>
                 <MenuItem
                   onClick={() => {

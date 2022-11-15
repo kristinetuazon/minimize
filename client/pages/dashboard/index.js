@@ -41,7 +41,7 @@ export default function Dashboard() {
               <IconButton>
                 <LibraryBooksIcon fontSize="medium" />
               </IconButton>
-              <Typography variant="h5"> Collections </Typography>
+              <Typography variant="h5"> Collection </Typography>
             </Box>
             <Paper
               sx={{

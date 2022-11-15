@@ -14,7 +14,7 @@ export default function ItemList({ listOfItems, handleDelete }) {
           </IconButton>
         }
       >
-        <ListItemText primary={item.title}  sx={{
+        <ListItemText primary={item.itemName}  sx={{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",

@@ -38,7 +38,7 @@ export default function NewList() {
 
   function handleAddItem(event) {
     if (item === "") return;
-    setListOfItems([...listOfItems, { id: uuidv4(), title: item }]);
+    setListOfItems([...listOfItems, { id: uuidv4(), itemName: item }]);
     setItem("");
   }
 
@@ -57,6 +57,8 @@ export default function NewList() {
 
     console.log(response)
   };
+
+  console.log(listOfItems)
 
   const handleSubmit = (event) => {
     event.preventDefault();
