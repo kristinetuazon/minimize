@@ -7,12 +7,19 @@ const collectionOfLists = new Schema({
   userEmail: String,
   uId: String,
   listDescription: String,
-  initialList: [{id: Number, itemName: String}],
+  initialList: [
+    new Schema({
+    id: String,
+    itemName: String
+  })
+],
   deletedId: [Number],
   finalId: [Number],
   maybeId: [Number],
   dateCreated: {type: Date, default: Date.now},
   dateUpdated: {type: Date, default: Date.now},}
 );
+
+
 
 module.exports = mongoose.model("List", collectionOfLists)

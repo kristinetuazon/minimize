@@ -51,7 +51,7 @@ export default function NewList() {
       body: JSON.stringify({
         nameOfList: listName,
         listDescription: description,
-         initialList: listOfItems,
+        initialList: listOfItems,
       }),
     }).catch((err) => console.log("error"));
 
