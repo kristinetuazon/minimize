@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const collectionOfLists = new Schema({
-  nameOfCollection: String,
+  nameOfList: String,
   userEmail: String,
   uId: String,
   listDescription: String,
-  initialList: [String],
-  deletedIndex: [Number],
-  finalIndex: [Number],
-  maybeIndex: [Number],
+  initialList: [{id: Number, itemName: String}],
+  deletedId: [Number],
+  finalId: [Number],
+  maybeId: [Number],
   dateCreated: {type: Date, default: Date.now},
   dateUpdated: {type: Date, default: Date.now},}
 );

@@ -20,11 +20,11 @@ export default function Dashboard() {
           container
           spacing={3}
           sx={{
-            my: 17,
+            my: 20,
             display: "flex",
             alignItems: "center",
             height: 1,
-            width: 1,
+            width: 1
           }}
         >
           <Grid item xs={8} sx={{ height: 1, width: 1 }}>
@@ -33,6 +33,7 @@ export default function Dashboard() {
                 mx: 2,
                 display: "flex",
                 alignItems: "center",
+                
               }}
               display="flex"
               flexDirection="row"
@@ -44,12 +45,12 @@ export default function Dashboard() {
             </Box>
             <Paper
               sx={{
-                mx: 2,
+                 mx: 2,
                 padding: 2,
                 display: "flex",
                 alignItems: "center",
-                height: 1,
-                width: 1,
+                maxHeight: '100%',
+                overflow: 'auto'
               }}
             >
                <CollectionGallery /> 

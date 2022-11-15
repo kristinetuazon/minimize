@@ -4,11 +4,12 @@ const List = require("../models/collectionOfLists")
 //add movies to DB
 
 const postList = async (req, res) => {
-    const{ nameOfCollection, userEmail, uId, initialList } = req.body 
+    const{ nameOfList, listDescription, userEmail, uId, initialList } = req.body 
     try {
 
         const newList = new List({
-            nameOfCollection: nameOfCollection,
+            nameOfList: nameOfList,
+            listDescription: listDescription,
             userEmail: userEmail,
             uId: uId,
             initialList: initialList
@@ -19,6 +20,7 @@ const postList = async (req, res) => {
     }catch(error){
         res.status(409).json({success: false, data: [], error: error})
     }
+    console.log(res)
 }
 
 
