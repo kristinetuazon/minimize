@@ -21,11 +21,11 @@ export default function ListComponent() {
         }}
         subheader={<li />}
       >
-        {[0, 1, 2, 3, 4].map((sectionId) => (
-          <li key={`section-${sectionId}`}>
+        {["Yes", "No", "Maybe"].map((sectionId, index) => (
+          <li key={index}>
             <ul>
-              <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
-              {[0, 1, 2].map((item) => (
+              <ListSubheader>{`${sectionId}`}</ListSubheader>
+              {[1, 2, 3, 4].map((item) => (
                 <ListItem key={`item-${sectionId}-${item}`}>
                   <ListItemText primary={`Item ${item}`} />
                 </ListItem>

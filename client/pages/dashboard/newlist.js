@@ -18,6 +18,8 @@ import { Button, Paper } from "@material-ui/core";
 import ItemList from "../../components/ItemList";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
+import { useRouter } from "next/router"
 // const LOCAL_STORAGE_KEY = 'minimize.item'
 
 export default function NewList() {
@@ -28,6 +30,7 @@ export default function NewList() {
   const listNameRef = createRef("");
   const descriptionRef = useRef("");
   const itemRef = useRef("");
+  const router = useRouter();
 
   function handleDelete({ id }) {
     setListOfItems(listOfItems.filter((item) => item.id !== id));
@@ -42,7 +45,7 @@ export default function NewList() {
     setItem("");
   }
 
-  const saveCollection = async() => {
+  const saveCollection = async () => {
     const response = await fetch("http://localhost:4000/collection/add", {
       method: "POST",
       headers: {
@@ -55,10 +58,10 @@ export default function NewList() {
       }),
     }).catch((err) => console.log("error"));
 
-    console.log(response)
+    console.log(response);
   };
 
-  console.log(listOfItems)
+  console.log(listOfItems);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -170,15 +173,17 @@ export default function NewList() {
 
             <br></br>
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleSubmit}
-            >
-              Start Sorting
-            </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={()=>{
+                  handleSubmit;
+                 return router.push('/dashboard/sort');}}
+              >
+                Start Sorting
+              </Button>
 
             <br></br>
           </Box>

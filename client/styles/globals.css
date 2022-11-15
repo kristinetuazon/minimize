@@ -2,6 +2,10 @@
     margin: 0
 }
 
+#link {
+    color: #283040;
+}
+
 #wrapper__register {
     display: flex;
     align-items: center;
@@ -43,4 +47,12 @@
     background-color: #E3E4E0;
 }
 
+#wrapper__myaccount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 70vh;
+    background-color: #E3E4E0;
+}
 
