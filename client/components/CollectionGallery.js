@@ -65,7 +65,7 @@ const addACollection = (
         <IconButton>
           <AddIcon fontSize="large" />
         </IconButton>
-        <Typography variant="h6"> a Collection </Typography>
+        <Typography variant="h6"> a New List </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Start</Button>
@@ -79,6 +79,8 @@ export default function CollectionGallery() {
     <>
       <Grid
         container
+        sx={{ position: "relative",
+        overflow: "auto",}}
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
