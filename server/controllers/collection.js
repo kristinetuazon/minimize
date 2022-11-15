@@ -1,7 +1,18 @@
 const List = require("../models/collectionOfLists")
 
+//get List from DB
 
-//add movies to DB
+const getList = async (req,res) => {
+    try {
+        const allLists = await List.find();
+        res.status(200).json({success:true, data: allLists});
+    }catch(error) {
+        res.status(409).json({success: false, data: [], error: error});
+    }
+}
+
+
+//add List to DB
 
 const postList = async (req, res) => {
     const{ nameOfList, listDescription, userEmail, uId, initialList } = req.body 
@@ -25,5 +36,6 @@ const postList = async (req, res) => {
 
 
 module.exports = {
-    postList
+    postList,
+    getList
 }

@@ -1,9 +1,10 @@
 const express = require("express");
-const {postList} = require("../controllers/collection");
+const { postList, getList } = require("../controllers/collection");
 
 const router = express.Router();
 
 router.post("/add", postList)
+router.get("/", getList)
 
 module.exports = router;
 
