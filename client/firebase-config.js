@@ -16,7 +16,6 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
-// console.log(dotenv ,process.env.local)
 
 
 const firebaseConfig = {

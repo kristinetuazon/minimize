@@ -17,7 +17,6 @@ import {
 } from "../firebase-config";
 import GoogleIcon from "@mui/icons-material/Google";
 import { grey } from '@mui/material/colors';
-import Navbar from '../components/Navbar'
 
 export default function Register({setRegister}) {
   const [email, setEmail] = useState("");

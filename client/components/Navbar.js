@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Toolbar,
@@ -8,70 +8,96 @@ import {
   MenuList,
   Stack,
   IconButton,
+  Drawer,
+  Typography,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
-// import SyncAltIcon from "@mui/icons-material/SyncAlt";
+import ListIcon from "@mui/icons-material/List";
+import SyncAltIcon from "@mui/icons-material/SyncAlt";
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../firebase-config";
 import Image from "next/image";
 import logo from "../public/logo-long.png";
 
 export default function NavBar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [open, setOpen] = useState(false);
 
   return (
-    <div id="nav__wrapper">
-      <Box id="nav__box" sx={{ flexGrow: 4 }}>
-        <AppBar style={{ background: "transparent", boxShadow: "none" }}>
-          <Toolbar>
-            <Image src={logo} alt="logo" width={150} />
-            <IconButton
-              size="large"
-              edge="start"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </IconButton>
+    <>
+      <div id="nav__wrapper">
+        <Box id="nav__box" sx={{ flexGrow: 4 }}>
+          <AppBar style={{ background: "transparent", boxShadow: "none" }}>
+            <Toolbar>
+              <Image src={logo} alt="logo" width={150} />
+              <IconButton
+                size="large"
+                edge="start"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={() => setOpen(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </div>
 
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              <MenuList>
-                <Stack direction="column" sx={{ mx: 2 }}>
-                  <MenuItem><Link href="/dashboard">My account</Link></MenuItem>
-                  <MenuItem>Sort</MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      handleClose();
-                      return logout();
-                    }}
-                  >
-                    Logout
-                  </MenuItem>
-                </Stack>
-              </MenuList>
-            </Menu>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </div>
+      <div>
+        <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
+          <div
+            style={{
+              width: 250,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 40,
+            }}
+            onClick={() => setOpen(false)}
+          >
+            <Typography variant="h5" component="h1">
+              Hello!
+            </Typography>
+            <Typography variant="caption">Welcome back.</Typography>
+
+            <MenuList>
+              <Stack direction="column" sx={{ mx: 2 }}>
+                <MenuItem>
+                  <ListItemIcon>
+                    <AccountCircleIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>My Account</ListItemText>
+                </MenuItem>
+                <MenuItem>
+                  <ListItemIcon>
+                    <ListIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>New List</ListItemText>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    setOpen(false);
+                    return logout();
+                  }}
+                >
+                  <ListItemIcon>
+                    <LogoutIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>Logout</ListItemText>
+                </MenuItem>
+              </Stack>
+            </MenuList>
+          </div>
+        </Drawer>
+      </div>
+    </>
   );
 }

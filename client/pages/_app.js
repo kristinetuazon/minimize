@@ -54,6 +54,7 @@ function MyApp({
     }
   }, []);
 
+
   return (
     <>
     <AuthContextProvider>
