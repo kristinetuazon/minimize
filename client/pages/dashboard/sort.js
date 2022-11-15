@@ -44,7 +44,7 @@ export default function Sort() {
     >
       <br></br>
       <Typography component="h1" variant="h5" color="primary.dark">
-        Let's Start Sorting
+       Start Sorting
       </Typography>
       <br></br>
     </Box>
