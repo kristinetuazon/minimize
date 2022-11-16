@@ -9,7 +9,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
+// import { grey } from "@mui/material/colors";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
@@ -28,6 +28,7 @@ export default function Sort() {
   const [sortList, setSortList] = useState([]);
   const [userInfo, setUserInfo] = useState({});
 let userid = userInfo.uid
+
   useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (user) => {
       if (userInfo) {
@@ -47,7 +48,7 @@ let userid = userInfo.uid
   useEffect(() => {
     if (!hasTriggered.current) {
       server
-      .get(`/collection/getlist/member/j4EiCKue5oMUn0iIKwtQJezcbF93/latest`)
+      .get(`https://minimize.onrender.com/collection/getlist/member/${userid}/latest`)
       .then((res) => {
         console.log(res.data);
         setSortList(res.data);

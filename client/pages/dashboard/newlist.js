@@ -90,7 +90,7 @@ export default function NewList() {
       initialList: listOfItems,
   }
 
-    server.post("/collection/add",payload)
+    server.post("https://minimize.onrender.com/collection/add",payload)
     .then((res) => {console.log(res)})
     .catch((error) => {console.log(error)})
   }
