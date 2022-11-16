@@ -14,7 +14,7 @@ const TinderCard = dynamic(
 export default function TinderCards( {sortList} ) {
 
 
-  return sortList.map((item) => {
+  return sortList.initialList.map((item) => {
     return (
         <>
         <TinderCard
