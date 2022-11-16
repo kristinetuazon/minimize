@@ -7,6 +7,7 @@ import {
   } from "@mui/material";
 
 export default function MyAccount() {
+
   return (
     <>
     <div id="wrapper__myaccount">

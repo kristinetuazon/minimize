@@ -13,9 +13,24 @@ const collectionOfLists = new Schema({
     itemName: String
   })
 ],
-  deletedId: [Number],
-  finalId: [Number],
-  maybeId: [Number],
+  deletedList: [
+    new Schema({
+    id: String,
+    itemName: String
+  })
+],
+  finalList: [
+    new Schema({
+    id: String,
+    itemName: String
+  })
+],
+  maybeList: [
+    new Schema({
+    id: String,
+    itemName: String
+  })
+],
   dateCreated: {type: Date, default: Date.now},
   dateUpdated: {type: Date, default: Date.now},}
 );

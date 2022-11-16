@@ -14,8 +14,9 @@ import { Button, Paper } from "@material-ui/core";
 import ItemList from "../../components/ItemList";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/router"
 import { auth, onAuthStateChanged } from "../../firebase-config";
+import { useRouter } from "next/router";
+import  Link  from "next/link";
 
 export default function NewList() {
   const [listName, setListName] = useState("");
@@ -52,6 +53,7 @@ export default function NewList() {
   console.log(listName);
   console.log(description);
   console.log(listOfItems);
+  console.log(userInfo.email, userInfo.uid)
 
   function handleAddItem(event) {
     if (item === "") return;
@@ -60,7 +62,7 @@ export default function NewList() {
   }
 
   const saveCollection = async () => {
-    const response = await fetch("http://localhost:4000/collection/add", {
+    const response = await fetch("http://localhost:4001/collection/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,6 +84,7 @@ export default function NewList() {
   const handleSubmit = (event) => {
     event.preventDefault();
     saveCollection();
+    router.push('/dashboard/sort');
   };
 
   return (
@@ -194,9 +197,7 @@ export default function NewList() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={()=>{
-                  handleSubmit;
-                 return router.push('/dashboard/sort');}}
+                onClick={handleSubmit}
               >
                 Start Sorting
               </Button>

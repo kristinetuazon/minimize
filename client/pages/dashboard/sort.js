@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState} from "react";
 import { Card, CardContent, Typography, Box, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from "@mui/material";
 import { grey } from '@mui/material/colors';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router"
 
 const TinderCard = dynamic(
   () => {
@@ -14,8 +15,8 @@ const TinderCard = dynamic(
 );
 
 export default function Sort() {
- 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+
 
   const handleClickOpen = () => {
     setOpen(true);
