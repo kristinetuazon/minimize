@@ -8,19 +8,15 @@ import {
   FormControl,
   TextField,
   List,
-  ListItem,
-  ListItemText,
-  Avatar,
-  ListItemAvatar,
   Input,
 } from "@mui/material";
 import { Button, Paper } from "@material-ui/core";
 import ItemList from "../../components/ItemList";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
-import Link from "next/link";
-import { useRouter } from "next/router"
-// const LOCAL_STORAGE_KEY = 'minimize.item'
+import { auth, onAuthStateChanged } from "../../firebase-config";
+import { useRouter } from "next/router";
+import  Link  from "next/link";
 
 export default function NewList() {
   const [listName, setListName] = useState("");
@@ -32,12 +28,32 @@ export default function NewList() {
   const itemRef = useRef("");
   const router = useRouter();
 
+  const [userInfo, setUserInfo] = useState({});
+  
+  useEffect(() => {
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
+        if (userInfo) {
+            setUserInfo({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photo: user.photoURL
+            })
+        }else{
+            setUserInfo(Null);
+        }
+    })
+    return () => unsuscribe()
+},[])
+
+
   function handleDelete({ id }) {
     setListOfItems(listOfItems.filter((item) => item.id !== id));
   }
   console.log(listName);
   console.log(description);
   console.log(listOfItems);
+  console.log(userInfo.email, userInfo.uid)
 
   function handleAddItem(event) {
     if (item === "") return;
@@ -46,13 +62,15 @@ export default function NewList() {
   }
 
   const saveCollection = async () => {
-    const response = await fetch("http://localhost:4000/collection/add", {
+    const response = await fetch("http://localhost:4001/collection/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         nameOfList: listName,
+        userEmail: userInfo.email,
+        uId: userInfo.uid,
         listDescription: description,
         initialList: listOfItems,
       }),
@@ -66,6 +84,7 @@ export default function NewList() {
   const handleSubmit = (event) => {
     event.preventDefault();
     saveCollection();
+    router.push('/dashboard/sort');
   };
 
   return (
@@ -178,9 +197,7 @@ export default function NewList() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={()=>{
-                  handleSubmit;
-                 return router.push('/dashboard/sort');}}
+                onClick={handleSubmit}
               >
                 Start Sorting
               </Button>

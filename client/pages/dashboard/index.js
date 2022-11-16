@@ -4,7 +4,6 @@ import {
   Typography,
   Paper,
   Box,
-  Button,
   IconButton,
 } from "@mui/material";
 import ListIcon from "@mui/icons-material/List";
@@ -13,8 +12,10 @@ import CollectionGallery from "../../components/CollectionGallery";
 import List from "../../components/List";
 
 export default function Dashboard() {
+ 
   return (
     <>
+    
       <div id="wrapper__dashboard">
         <Grid
           container
