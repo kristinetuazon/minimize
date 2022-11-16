@@ -51,34 +51,12 @@ export default function NewList() {
   function handleDelete({ id }) {
     setListOfItems(listOfItems.filter((item) => item.id !== id));
   }
-  console.log(listName);
-  console.log(description);
-  console.log(listOfItems);
-  console.log(userInfo.email, userInfo.uid)
-
+ 
   function handleAddItem(event) {
     if (item === "") return;
     setListOfItems([...listOfItems, { id: uuidv4(), itemName: item }]);
     setItem("");
   }
-
-  // const saveCollection = async () => {
-  //   const response = await fetch("http://localhost:4002/collection/add", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       nameOfList: listName,
-  //       userEmail: userInfo.email,
-  //       uId: userInfo.uid,
-  //       listDescription: description,
-  //       initialList: listOfItems,
-  //     }),
-  //   }).catch((err) => console.log("error"));
-
-  //   console.log(response);
-  // };
 
 
   const saveCollection = async () => {

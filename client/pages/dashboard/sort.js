@@ -48,7 +48,7 @@ let userid = userInfo.uid
   useEffect(() => {
     if (!hasTriggered.current) {
       server
-      .get(`https://minimize.onrender.com/collection/getlist/member/${userid}/latest`)
+      .get(`https://minimize.onrender.com/collection/getlist/member/j4EiCKue5oMUn0iIKwtQJezcbF93/latest`)
       .then((res) => {
         console.log(res.data);
         setSortList(res.data);
