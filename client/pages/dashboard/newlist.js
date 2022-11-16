@@ -16,7 +16,9 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
 import { auth, onAuthStateChanged } from "../../firebase-config";
 import { useRouter } from "next/router";
-import  Link  from "next/link";
+import axios from "../../axios-config"
+import server from "../../axios-config";
+// import  Link  from "next/link";
 
 export default function NewList() {
   const [listName, setListName] = useState("");
@@ -27,7 +29,6 @@ export default function NewList() {
   const descriptionRef = useRef("");
   const itemRef = useRef("");
   const router = useRouter();
-
   const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
@@ -61,25 +62,38 @@ export default function NewList() {
     setItem("");
   }
 
+  // const saveCollection = async () => {
+  //   const response = await fetch("http://localhost:4002/collection/add", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       nameOfList: listName,
+  //       userEmail: userInfo.email,
+  //       uId: userInfo.uid,
+  //       listDescription: description,
+  //       initialList: listOfItems,
+  //     }),
+  //   }).catch((err) => console.log("error"));
+
+  //   console.log(response);
+  // };
+
+
   const saveCollection = async () => {
-    const response = await fetch("http://localhost:4001/collection/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nameOfList: listName,
-        userEmail: userInfo.email,
-        uId: userInfo.uid,
-        listDescription: description,
-        initialList: listOfItems,
-      }),
-    }).catch((err) => console.log("error"));
+    const payload = { 
+      nameOfList: listName,
+      userEmail: userInfo.email,
+      uId: userInfo.uid,
+      listDescription: description,
+      initialList: listOfItems,
+  }
 
-    console.log(response);
-  };
-
-  console.log(listOfItems);
+    server.post("/collection/add",payload)
+    .then((res) => {console.log(res)})
+    .catch((error) => {console.log(error)})
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();

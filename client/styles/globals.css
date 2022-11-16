@@ -39,6 +39,7 @@
 
 
 #wrapper__sort{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,5 +55,9 @@
     width: 100vw;
     height: 70vh;
     background-color: #E3E4E0;
+}
+
+.swipe{
+    position: absolute;
 }
 
