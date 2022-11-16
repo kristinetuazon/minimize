@@ -20,7 +20,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../firebase-config";
 import Image from "next/image";
-import logo from "../public/logo-long.png";
+import logo from "./../public/minimize.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, onAuthStateChanged } from "../firebase-config";
 import { useRouter } from "next/router";
