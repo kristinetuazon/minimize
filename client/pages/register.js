@@ -17,21 +17,24 @@ import {
 } from "../firebase-config";
 import GoogleIcon from "@mui/icons-material/Google";
 import { grey } from '@mui/material/colors';
+import { useRouter } from "next/router";
 
 export default function Register({setRegister}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) router.push('/dashboard');
+  }, [user, loading, router]);
 
   const register = () => {
     if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
+    registerWithEmailAndPassword(auth, name, email, password);
   };
-  // useEffect(() => {
-  //   if (loading) return;
-  //   if (user) history("/dashboard");
-  // }, [user, loading, history]);
   
   return (
     <>
@@ -114,7 +117,7 @@ export default function Register({setRegister}) {
           onClick={signInWithGoogle}
           sx={{ mt: 0, mb: 2, width: 1/2}}
         >
-          Sign In with
+          Sign up with
         </Button>
 
         <Box
@@ -130,7 +133,7 @@ export default function Register({setRegister}) {
           <Grid container>
             <Grid item xs sx={{ mx: 2 }}>
                <Typography color="secondary" variant="body2" >
-                <Link href="/">  Already have an account? Login here. </Link>
+                <Link href="/" id="link">  Already have an account? Login here. </Link>
                 </Typography>
             </Grid>
           </Grid>

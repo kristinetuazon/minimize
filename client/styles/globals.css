@@ -2,6 +2,10 @@
     margin: 0
 }
 
+#link {
+    color: #283040;
+}
+
 #wrapper__register {
     display: flex;
     align-items: center;
@@ -35,6 +39,16 @@
 
 
 #wrapper__sort{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #E3E4E0;
+}
+
+#wrapper__myaccount{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,4 +57,7 @@
     background-color: #E3E4E0;
 }
 
+.swipe{
+    position: absolute;
+}
 

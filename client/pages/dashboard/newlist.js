@@ -8,17 +8,17 @@ import {
   FormControl,
   TextField,
   List,
-  ListItem,
-  ListItemText,
-  Avatar,
-  ListItemAvatar,
   Input,
 } from "@mui/material";
 import { Button, Paper } from "@material-ui/core";
 import ItemList from "../../components/ItemList";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
-// const LOCAL_STORAGE_KEY = 'minimize.item'
+import { auth, onAuthStateChanged } from "../../firebase-config";
+import { useRouter } from "next/router";
+import axios from "../../axios-config"
+import server from "../../axios-config";
+
 
 export default function NewList() {
   const [listName, setListName] = useState("");
@@ -28,6 +28,25 @@ export default function NewList() {
   const listNameRef = createRef("");
   const descriptionRef = useRef("");
   const itemRef = useRef("");
+  const router = useRouter();
+  const [userInfo, setUserInfo] = useState({});
+  
+  useEffect(() => {
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
+        if (userInfo) {
+            setUserInfo({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photo: user.photoURL
+            })
+        }else{
+            setUserInfo(Null);
+        }
+    })
+    return () => unsuscribe()
+},[])
+
 
   function handleDelete({ id }) {
     setListOfItems(listOfItems.filter((item) => item.id !== id));
@@ -35,6 +54,7 @@ export default function NewList() {
   console.log(listName);
   console.log(description);
   console.log(listOfItems);
+  console.log(userInfo.email, userInfo.uid)
 
   function handleAddItem(event) {
     if (item === "") return;
@@ -42,27 +62,43 @@ export default function NewList() {
     setItem("");
   }
 
-  const saveCollection = async() => {
-    const response = await fetch("http://localhost:4000/collection/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nameOfList: listName,
-        listDescription: description,
-        initialList: listOfItems,
-      }),
-    }).catch((err) => console.log("error"));
+  // const saveCollection = async () => {
+  //   const response = await fetch("http://localhost:4002/collection/add", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       nameOfList: listName,
+  //       userEmail: userInfo.email,
+  //       uId: userInfo.uid,
+  //       listDescription: description,
+  //       initialList: listOfItems,
+  //     }),
+  //   }).catch((err) => console.log("error"));
 
-    console.log(response)
-  };
+  //   console.log(response);
+  // };
 
-  console.log(listOfItems)
+
+  const saveCollection = async () => {
+    const payload = { 
+      nameOfList: listName,
+      userEmail: userInfo.email,
+      uId: userInfo.uid,
+      listDescription: description,
+      initialList: listOfItems,
+  }
+
+    server.post("/collection/add",payload)
+    .then((res) => {console.log(res)})
+    .catch((error) => {console.log(error)})
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     saveCollection();
+    router.push('/dashboard/sort');
   };
 
   return (
@@ -170,15 +206,15 @@ export default function NewList() {
 
             <br></br>
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleSubmit}
-            >
-              Start Sorting
-            </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={handleSubmit}
+              >
+                Start Sorting
+              </Button>
 
             <br></br>
           </Box>

@@ -19,11 +19,18 @@ import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleIcon from "@mui/icons-material/Google";
 import { grey } from "@mui/material/colors";
+import { useRouter } from "next/router";
 
 export default function HomePage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
+   
+   useEffect(() => {
+     if (loading) return;
+     if (user) router.push('/dashboard');
+   }, [user, loading, router]);
 
   return (
     <>
@@ -72,6 +79,7 @@ export default function HomePage() {
             required
             fullWidth
             autoFocus
+            type="password"
             aria-describedby="password-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +93,7 @@ export default function HomePage() {
           type="submit"
           variant="contained"
           sx={{ mt: 4, mb: 2, width: 1 / 2 }}
-          onClick={() => signInWithEmailAndPassword(email, password)}
+          onClick={() => signInWithEmailAndPassword(auth, email, password)}
         >
           Sign In
         </Button>
@@ -117,12 +125,12 @@ export default function HomePage() {
                 variant="body2"
                 sx={{ mt: 1, mb: 2 }}
               >
-                <Link href="/reset">Forgot password?</Link>
+                <Link href="/reset" id="link">Forgot password?</Link>
               </Typography>
             </Grid>
             <Grid item xs sx={{ mx: 1 }}>
               <Typography color="secondary" variant="body2">
-              <Link href="/register"> Do not have an account? Sign up.</Link>
+              <Link href="/register" id="link"> Do not have an account? Sign up.</Link>
               </Typography>
             </Grid>
           </Grid>
