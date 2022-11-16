@@ -14,17 +14,18 @@ const TinderCard = dynamic(
 export default function TinderCards( {sortList} ) {
 
 
-  return sortList.initialList.map((item) => {
+
+  return sortList.map((item) => {
     return (
         <>
         <TinderCard
           className="swipe"
           key={item.key}
           preventSwipe={["up"]}
-        >
+          >
           <Card
             sx={{
-              width: "50vw",
+              width: "30vw",
               height:"50vh",
               display: "flex",
               bgcolor: "background.primary",
@@ -33,14 +34,10 @@ export default function TinderCards( {sortList} ) {
               alignItems: "center",
               alignContent: "center",
             }}
-          >
+            >
             <CardContent
               sx={{
-                my: 12,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                alignContent: "center",
+               my: 12
               }}
             >
               <Typography

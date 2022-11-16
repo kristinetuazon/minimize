@@ -18,7 +18,7 @@ import { auth, onAuthStateChanged } from "../../firebase-config";
 import { useRouter } from "next/router";
 import axios from "../../axios-config"
 import server from "../../axios-config";
-// import  Link  from "next/link";
+
 
 export default function NewList() {
   const [listName, setListName] = useState("");

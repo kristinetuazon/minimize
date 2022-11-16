@@ -7,6 +7,7 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -17,6 +18,7 @@ import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import TinderCards from "../../components/TinderCards";
 import { auth, onAuthStateChanged } from "../../firebase-config";
 import server from "../../axios-config";
+import  Link  from "next/link";
 
 
 
@@ -87,24 +89,20 @@ let userid = userInfo.uid
         </Dialog>
       </div>
       <div id="wrapper__sort">
-        {/* <Box
-          sx={{
-            mt: "6",
-            position: "relative",
-            boxShadow: 3,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            alignContent: "center",
-            width: "70vw",
-            height: "70vw",
-          }}
-          backgroundColor={grey[50]}
-        > */}
+      <Link href="/dashboard/endsort" id="link">
+           <Button
+           
+                type="submit"          
+                variant="contained"
+                sx={{ padding: 2 }}>
+                <Typography variant="h6">See your results ⭐️</Typography>
+              </Button>
+              </Link>
+
+
 
           <TinderCards sortList={sortList}/>
 
-        {/* </Box> */}
       </div>
     </>
   );

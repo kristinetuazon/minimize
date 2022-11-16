@@ -5,7 +5,7 @@ const getMemberLatestList= async (req,res) => {
     const uId = req.params.uId;
     try {
         const list = await List.find({ uId: uId })
-        res.status(200).json(list[list.length-1]);
+        res.status(200).json(list[list.length-1].initialList);
     }catch(error) {
         res.status(409).json({success: false, data: [], error: error});
     }
