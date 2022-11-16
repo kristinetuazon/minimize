@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import {
     Box,
     Grid,
@@ -7,6 +7,18 @@ import {
   } from "@mui/material";
 
 export default function MyAccount() {
+//   let hasTriggered = useRef(false);
+
+//   useEffect(() => {
+//     if (!hasTriggered.current) {
+//       server
+//       .get('/collection/getlist/')
+//       .then((res) => {
+//         console.log(res.data)
+//       })
+//       hasTriggered.current = true
+//       }
+// }, [hasTriggered])
 
   return (
     <>

@@ -1,7 +1,6 @@
 import React from "react";
 import { IconButton, ListItem, ListItemText } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { v4 as uuidv4 } from 'uuid';
 
 export default function ItemList({ listOfItems, handleDelete }) {
   return listOfItems.map((item) => {
