@@ -23,11 +23,10 @@ import  Link  from "next/link";
 
 
 export default function Sort() {
-  let hasTriggered = useRef(false);
+  // let hasTriggered = useRef(false);
   const [open, setOpen] = useState(true);
   const [sortList, setSortList] = useState([]);
   const [userInfo, setUserInfo] = useState({});
-let userid = userInfo.uid
 
   useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (user) => {
@@ -42,20 +41,22 @@ let userid = userInfo.uid
         setUserInfo(null);
       }
     });
-    return () => unsuscribe();
-  }, []);
-
-  useEffect(() => {
-    if (!hasTriggered.current) {
+    // (() => unsuscribe())();
+    if (userInfo) {
+      console.log('second useEffect')
+      console.log('🦋', userInfo)
       server
-      .get(`https://minimize.onrender.com/collection/getlist/member/j4EiCKue5oMUn0iIKwtQJezcbF93/latest`)
+      // .get(`https://minimize.onrender.com/collection/getlist/member/j4EiCKue5oMUn0iIKwtQJezcbF93/latest`)
+      .get(`https://minimize.onrender.com/collection/getlist/member/${userInfo.uid}/latest`)
       .then((res) => {
         console.log(res.data);
         setSortList(res.data);
       });
-      hasTriggered.current = true;
     }
-  }, [hasTriggered]);
+  }, []);
+  
+  // useEffect(() => {
+  // }, [userInfo]);
 
 
 
