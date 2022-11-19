@@ -38,7 +38,11 @@ Are you looking to declutter your closet or the unmentionable drawer you have in
 
 Then this application is for you!
 <br />
-My user stories are: Emily--young and career driven. She currently works at consulting and is dealing with stress often. To counter that, she goes for retail therapy and a friend pointed out that it may be an addiction. So she wanted an app that could help her sort over her things and help her keep track of what is sorted and what is not. Another is Tim--a digital nomad, and a person who travels everywhere all the time. He keeps his stuff light, but sometimes it is hard to know what he needs. He wants an application that will allow him to keep track of what he brought in what trip and also help him double check and sort through the things he's bringing.
+Meet Emily--young and career driven. She currently works at consulting and is dealing with stress often. She often finds herself using retail therapy to destress. A friend pointed out that it may be an addiction. She wants an app that could help her sort over her things and help her keep track of what is sorted and what is not. 
+
+<br />
+
+Meet Tim--a digital nomad, and a person who travels everywhere all the time. He doesn't own much, but sometimes it is hard to know what he needs. He wants an application that will allow him to keep track of what he brought in what trip and also help him double check and sort through the things he's bringing.
 <br />
 <br />
 
@@ -58,11 +62,11 @@ Inspired by Marie Kondo's "what sparks joy" and the Minimalist lifestyle--Minimi
 
 <br />
 
-For this project, I chose to use MongoDB, Express, NextJS and Node. Due to the serious time constraints to meet the minimal viable product of this project, I've relied heavily on Material UI for UI design. It was my first time using MongoDB and NextJS, so I had to figure out to configure and learn these frameworks as I worked on this project. I personally used a non-SQL database because of the nature of my application--because information being sent and kept are soley reliant on the user (user-generated), there are no intrinsic connections with the data being collected and fetched except for the fact that a particular user is using it.
+For this project, I chose to use MongoDB, Express, NextJS and Node. Due to the serious time constraints to meet the minimal viable features of this project, I've relied heavily on Material UI for UI design. It was my first time using MongoDB and NextJS, so I had to figure out to configure and learn these frameworks as I worked on this project. I personally used a non-SQL database because of the nature of my application--because information being sent and kept are soley reliant on the user (user-generated), there are no intrinsic connections with the data being collected and fetched except for the fact that a particular user is using it.
 
 <br />
 
-The front end client is being deployed in Vercel, creators of NextJS and was quite a natural choice when I decided to do the UI in Next. My express server is being deployed in Render.I chose to split the client and server side deployment for a future idea of having the application in a phone application with an accompanying website. Also, Vercel discourages a server upload in their own services since Next JS natively supports a serverless framework.
+The front end client is being deployed in Vercel, creators of NextJS and was quite a natural choice when I decided to do the UI in Next. My express server is being deployed in Render.I chose to split the client and server side deployment for a future idea of having the application in a phone application with an accompanying website.
 
 ## Personal Reflections
 <br />
@@ -72,14 +76,14 @@ The front end client is being deployed in Vercel, creators of NextJS and was qui
 
 <br />
 
-This is the first solo full-stack application I have made. Some of the things I learned was more about deployment (from npm scripts and mono vs duo repos). I've also learned more about Firebase/Firestore authentication and database and how it is built to run in the client side and not in the server side. Initially I was rerouting my authorization requests from my express server to the client which is a roundabout way of doing things. After reading some documentation and some examples, I realized that it is build for client side configuration and it made making authentication happen smoothly.
+This is the first solo full-stack application I have made. Some of the things I learned was more about deployment (from npm scripts and mono vs duo repos). I've also learned more about Firebase/Firestore authentication and database and how it is built to run in the client side and not in the server side. Initially I was rerouting my authorization requests from my express server to the client which is a roundabout way of doing things. After reading some documentation and some examples, I realized that Google created firebase for client side configuration, so I left it as a frontend dependency.
 
 <br />
 
 ![Minimize-jpeg 008](https://user-images.githubusercontent.com/72143947/202567020-2201def3-3274-4e19-9192-a0f35c6c8344.jpeg)
 
 <br />
-Personally, I gravitate more in the frontend more than the backend, so the backend work was a great challenge for me. I am thankful that MongoDB schemas are much more forgiving and easier to update if needed. Also thinking of data and how it is used within the application is another new thing to think about. 
+The backend work was a great challenge for me. I am thankful that MongoDB schemas are much more forgiving and easier to update if needed. I need to add session ids to record and use
 <br />
 
 ## Development setup
