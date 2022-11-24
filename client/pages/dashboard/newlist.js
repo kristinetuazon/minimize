@@ -16,8 +16,8 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { v4 as uuidv4 } from "uuid";
 import { auth, onAuthStateChanged } from "../../firebase-config";
 import { useRouter } from "next/router";
-import axios from "../../axios-config"
 import server from "../../axios-config";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 
 export default function NewList() {
@@ -30,6 +30,9 @@ export default function NewList() {
   const itemRef = useRef("");
   const router = useRouter();
   const [userInfo, setUserInfo] = useState({});
+  const [localStorage, setLocalStorage] = useLocalStorage("list", listOfItems);
+
+
   
   useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (user) => {
@@ -63,21 +66,25 @@ export default function NewList() {
     const payload = { 
       nameOfList: listName,
       userEmail: userInfo.email,
-      uId: userInfo.uid,
+      uId: userinfo.email,
       listDescription: description,
       initialList: listOfItems,
   }
-  console.log(payload)
-    server.post("https://minimize.onrender.com/collection/add",payload)
+
+    // server.post("https://minimize.onrender.com/collection/add",payload)
+    server.post("http://localhost:8080/add/newCollection",payload)
     .then((res) => {console.log(res)})
     .catch((error) => {console.log(error)})
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLocalStorage(listOfItems)
     saveCollection();
     router.push('/dashboard/sort');
   };
+
+  console.log(localStorage);
 
   return (
     <>

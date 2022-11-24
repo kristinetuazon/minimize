@@ -11,11 +11,11 @@ const TinderCard = dynamic(
   { ssr: false }
 );
 
-export default function TinderCards( {sortList} ) {
+export default function TinderCards( {localStorage} ) {
 
 
 
-  return sortList.map((item) => {
+  return localStorage.map((item) => {
     return (
         <>
         <TinderCard
@@ -38,7 +38,7 @@ export default function TinderCards( {sortList} ) {
             <CardContent
               sx={{
                my: 12
-              }}
+              }}da
             >
               <Typography
                 sx={{ fontSize: 16 }}
