@@ -30,7 +30,7 @@ export default function NewList() {
   const itemRef = useRef("");
   const router = useRouter();
   const [userInfo, setUserInfo] = useState({});
-  const [localStorage, setLocalStorage] = useLocalStorage("list", listOfItems);
+  const [localStorage, setLocalStorage] = useLocalStorage("list", []);
 
 
   

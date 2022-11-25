@@ -66,19 +66,14 @@ console.log(localStorage);
       </div>
       <div id="wrapper__sort">
       <Link href="/dashboard/endsort" id="link">
-           <Button
-           
-                type="submit"          
-                variant="contained"
-                sx={{ padding: 2 }}>
-                <Typography variant="h6">See your results ⭐️</Typography>
-              </Button>
-              </Link>
-
-
-
-          <TinderCards localStorage={localStorage}/>
-
+           <Button        
+            type="submit"          
+            variant="contained"
+            sx={{ padding: 2 }}>
+            <Typography variant="h6">See your results ⭐️</Typography>
+          </Button>
+      </Link>
+      {localStorage && <TinderCards localStorage={localStorage}/>}
       </div>
     </>
   );

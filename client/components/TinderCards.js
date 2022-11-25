@@ -14,7 +14,6 @@ const TinderCard = dynamic(
 export default function TinderCards( {localStorage} ) {
 
 
-
   return localStorage.map((item) => {
     return (
         <>
