@@ -1,4 +1,7 @@
 import React, {useEffect, useRef} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from '../../slices/counterSlice'
+
 import {
     Box,
     Grid,

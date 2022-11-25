@@ -7,11 +7,25 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "@fontsource/quattrocento";
 import "@fontsource/quattrocento-sans";
 import { useEffect } from "react";
-import "../styles/reset.css";
 import "../styles/globals.css";
 import Navbar from "../components/Navbar.js";
+// import type { AppProps } from 'next/app';
+import { store } from '../store';
+import { Provider } from 'react-redux';
 
 const clientSideEmotionCache = createEmotionCache();
+
+// interface Theme {
+//   status: {
+//     danger: string;
+//   };
+// }
+// // allow configuration using `createTheme`
+// interface ThemeOptions {
+//   status?: {
+//     danger?: string;
+//   };
+// }
 
 const generalTheme = createTheme({
   palette: {
@@ -41,7 +55,7 @@ const generalTheme = createTheme({
   },
 });
 
-function MyApp({
+export default function MyApp({
   Component,
   emotionCache = clientSideEmotionCache,
   pageProps,
@@ -57,6 +71,7 @@ function MyApp({
   return (
     <>
       <CacheProvider value={emotionCache}>
+        <Provider store={store}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
         </Head>
@@ -65,9 +80,10 @@ function MyApp({
           <Navbar />
           <Component {...pageProps} />
         </ThemeProvider>
+        </Provider>
       </CacheProvider>
     </>
   );
 }
 
-export default MyApp;
+
