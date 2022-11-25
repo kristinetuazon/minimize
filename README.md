@@ -36,6 +36,7 @@ Are you looking to declutter your closet or the unmentionable drawer you have in
 <br />
 <br />
 
+
 Then this application is for you!
 <br />
 Meet Emily--young and career driven. She currently works at consulting and is dealing with stress often. She often finds herself using retail therapy to destress. A friend pointed out that it may be an addiction. She wants an app that could help her sort over her things and help her keep track of what is sorted and what is not. 
@@ -43,6 +44,7 @@ Meet Emily--young and career driven. She currently works at consulting and is de
 <br />
 
 Meet Tim--a digital nomad, and a person who travels everywhere all the time. He doesn't own much, but sometimes it is hard to know what he needs. He wants an application that will allow him to keep track of what he brought in what trip and also help him double check and sort through the things he's bringing.
+
 <br />
 <br />
 
@@ -68,6 +70,7 @@ For this project, I chose to use MongoDB, Express, NextJS and Node. Due to the s
 
 The front end client is being deployed in Vercel, creators of NextJS and was quite a natural choice when I decided to do the UI in Next. My express server is being deployed in Render.I chose to split the client and server side deployment for a future idea of having the application in a phone application with an accompanying website.
 
+
 ## Personal Reflections
 <br />
 
@@ -83,7 +86,9 @@ This is the first solo full-stack application I have made. Some of the things I 
 ![Minimize-jpeg 008](https://user-images.githubusercontent.com/72143947/202567020-2201def3-3274-4e19-9192-a0f35c6c8344.jpeg)
 
 <br />
+
 The backend work was a great challenge for me. I am thankful that MongoDB schemas are much more forgiving and easier to update if needed. I need to add session ids to record and use
+
 <br />
 
 ## Development setup
