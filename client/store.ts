@@ -1,11 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './slices/counterSlice'
+import { configureStore, AnyAction, Store, combineReducers, getState } from '@reduxjs/toolkit'
+import counter from './slices/counterSlice';
+import listOfItems from './slices/listSlice';
+// import { createWrapper, Context, HYDRATE } from 'next-redux-wrapper';
+// import { ConfigureStoreOptions, ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+// import type { Reducer } from '@reduxjs/toolkit';
+
+const combinedReducer = combineReducers ({
+counter,
+listOfItems,
+})
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    combinedReducer
   },
 })
+
+
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
