@@ -1,4 +1,4 @@
-import { configureStore, AnyAction, Store, combineReducers, getState } from '@reduxjs/toolkit'
+import { configureStore, AnyAction, Store, combineReducers} from '@reduxjs/toolkit'
 import counter from './slices/counterSlice';
 import listOfItems from './slices/listSlice';
 // import { createWrapper, Context, HYDRATE } from 'next-redux-wrapper';
