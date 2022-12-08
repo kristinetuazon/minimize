@@ -87,7 +87,9 @@ This is the first solo full-stack application I have made. Some of the things I 
 
 <br />
 
-The backend work was a great challenge for me. I am thankful that MongoDB schemas are much more forgiving and easier to update if needed. I need to add session ids to record and use
+The backend work was a great challenge for me. I am thankful that MongoDB schemas are much more forgiving and easier to update if needed. Currently the application holds dummy information with placeholders in its UI. Because I'm more of a visual learner, I have built the whole entire UI before actually putting in the necessary endpoints to store/retrieve data.
+
+I also ran issues in where fetching was longer than Next wanting to render some elements. I've mitigated the problem by using local storage to my disposal for instant access to the information than waiting for the server to serve up the necessary information. 
 
 <br />
 
