@@ -1,5 +1,7 @@
 const List = require("../models/collectionOfLists")
 
+console.log(List);
+
 
 const getMemberLatestList= async (req,res) => {
     const uId = req.params.uId;

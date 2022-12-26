@@ -33,7 +33,7 @@ export default function HomePage() {
    }, [user, loading, router]);
 
   return (
-    <>
+    <div id="signIn">
       <Box
         sx={{
           boxShadow: 3,
@@ -137,6 +137,6 @@ export default function HomePage() {
         </Box>
         <br></br>
       </Box>
-    </>
+      </div>
   );
 }

@@ -1,18 +1,18 @@
 import { configureStore, AnyAction, Store, combineReducers} from '@reduxjs/toolkit'
-import counter from './slices/counterSlice';
-import listOfItems from './slices/listSlice';
+// import counter from './slices/counterSlice';
+import listSlice from './slices/listSlice';
 // import { createWrapper, Context, HYDRATE } from 'next-redux-wrapper';
 // import { ConfigureStoreOptions, ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 // import type { Reducer } from '@reduxjs/toolkit';
 
-const combinedReducer = combineReducers ({
-counter,
-listOfItems,
-})
+// const combinedReducer = combineReducers ({
+// counter,
+// listOfItems,
+// })
 
 export const store = configureStore({
   reducer: {
-    combinedReducer
+    listSlice
   },
 })
 

@@ -13,10 +13,10 @@ const initialState: listState = {
   listOfItems: [],
   deletedList: [],
   maybeList: [],
-  finalList: [],
+  finalList: [], 
 }
 
-export const counterSlice = createSlice({
+export const listSlice = createSlice({
   name: "listOfItems",
   initialState,
   reducers: {
@@ -45,6 +45,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addItemToList, addItemToDeletedList,addItemToFinalList,addItemToMaybeList } = counterSlice.actions
+export const { addItemToList, addItemToDeletedList,addItemToFinalList,addItemToMaybeList } = listSlice.actions
 
-export default counterSlice.reducer
+export default listSlice.reducer

@@ -9,25 +9,21 @@ const collectionOfLists = new Schema({
   listDescription: String,
   initialList: [
     new Schema({
-    id: String,
     itemName: String
   })
 ],
   deletedList: [
     new Schema({
-    id: String,
     itemName: String
   })
 ],
   finalList: [
     new Schema({
-    id: String,
     itemName: String
   })
 ],
   maybeList: [
     new Schema({
-    id: String,
     itemName: String
   })
 ],

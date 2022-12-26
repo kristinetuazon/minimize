@@ -22,8 +22,9 @@ import { logout } from "../firebase-config";
 import Image from "next/image";
 import logo from "./../public/minimize.png";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, onAuthStateChanged } from "../firebase-config";
+import { auth, onAuthStateChanged, db } from "../firebase-config";
 import { useRouter } from "next/router";
+import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -42,10 +43,13 @@ export default function NavBar() {
           photo: user.photoURL,
         });
       } else {
-        setUserInfo(Null);
+        setUserInfo(null);
       }
     })}
   }, [userInfo, setUserInfo]);
+
+
+
 
   return (
     <>
