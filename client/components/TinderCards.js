@@ -24,23 +24,25 @@ export default function TinderCards( {localStorage} ) {
           >
           <Card
             sx={{
-              width: "30vw",
-              height:"50vh",
+              width: "300px",
+              height:"400px",
               display: "flex",
               bgcolor: "background.primary",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               alignContent: "center",
+              justifyContent: "center"
             }}
             >
             <CardContent
               sx={{
-               my: 12
-              }}da
+               my: 12,
+               justifySelf: "center"
+              }}
             >
               <Typography
-                sx={{ fontSize: 16 }}
+                sx={{ fontSize: 16}}
                 color="text.secondary"
                 gutterBottom
               >

@@ -104,7 +104,7 @@ export default function NewList() {
         >
           <Box
             sx={{
-              mx: 7,
+              mx: 5,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -112,7 +112,7 @@ export default function NewList() {
           >
             <br></br>
             <Typography component="h1" variant="h5">
-              Create a New List
+              Create a New Collection
             </Typography>
             <br></br>
             <FormControl>
