@@ -16,16 +16,16 @@ import AddIcon from "@mui/icons-material/Add";
 
 const card = (
   <React.Fragment>
-    <Box sx={{ minWidth: 100 }}>
+    <Box sx={{ minWidth: 150, overflow:"auto" }}>
       <Card variant="outlined" sx={{ bgcolor: "background.default" }}>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
             [Collection ID]
           </Typography>
-          <Typography variant="h5" component="div">
-            Name of Collection
+          <Typography variant="h6">
+            Name 
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <Typography sx={{ mb: 3, fontSize: 14 }} color="text.secondary">
             [Collection Detals]
           </Typography>
           <br />
@@ -53,7 +53,7 @@ const addAList = (
     >
       <CardContent
         sx={{
-          my: 5,
+          my: 3,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -77,7 +77,8 @@ export default function CollectionGallery() {
     <>
       <Grid
         container
-        sx={{ position: "relative", overflow: "auto" }}
+        sx={{ position: "relative", overflow: "auto"
+        }}
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >

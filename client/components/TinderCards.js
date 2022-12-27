@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
+// import { grey } from "@mui/material/colors";
 import dynamic from "next/dynamic";
 
 
@@ -11,11 +11,10 @@ const TinderCard = dynamic(
   { ssr: false }
 );
 
-export default function TinderCards( {sortList} ) {
+export default function TinderCards( {localStorage} ) {
 
 
-
-  return sortList.map((item) => {
+  return localStorage.map((item) => {
     return (
         <>
         <TinderCard
@@ -25,23 +24,25 @@ export default function TinderCards( {sortList} ) {
           >
           <Card
             sx={{
-              width: "30vw",
-              height:"50vh",
+              width: "300px",
+              height:"400px",
               display: "flex",
               bgcolor: "background.primary",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               alignContent: "center",
+              justifyContent: "center"
             }}
             >
             <CardContent
               sx={{
-               my: 12
+               my: 12,
+               justifySelf: "center"
               }}
             >
               <Typography
-                sx={{ fontSize: 16 }}
+                sx={{ fontSize: 16}}
                 color="text.secondary"
                 gutterBottom
               >

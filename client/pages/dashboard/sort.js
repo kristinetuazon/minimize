@@ -9,56 +9,35 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+// import { grey } from "@mui/material/colors";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
-// import { auth, onAuthStateChanged } from "../../firebase-config";
-// import { useRouter } from "next/router";
 import TinderCards from "../../components/TinderCards";
-import { auth, onAuthStateChanged } from "../../firebase-config";
-import server from "../../axios-config";
 import  Link  from "next/link";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 
 
 export default function Sort() {
-  let hasTriggered = useRef(false);
   const [open, setOpen] = useState(true);
-  const [sortList, setSortList] = useState([]);
-  const [userInfo, setUserInfo] = useState({});
-let userid = userInfo.uid
-  useEffect(() => {
-    const unsuscribe = onAuthStateChanged(auth, (user) => {
-      if (userInfo) {
-        setUserInfo({
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          photo: user.photoURL,
-        });
-      } else {
-        setUserInfo(null);
-      }
-    });
-    return () => unsuscribe();
-  }, []);
-
-  useEffect(() => {
-    if (!hasTriggered.current) {
-      server
-      .get(`/collection/getlist/member/j4EiCKue5oMUn0iIKwtQJezcbF93/latest`)
-      .then((res) => {
-        console.log(res.data);
-        setSortList(res.data);
-      });
-      hasTriggered.current = true;
-    }
-  }, [hasTriggered]);
+  const [localStorage, setLocalStorage] = useLocalStorage('list');
 
 
+  //   if (userInfo) {
+  //     console.log('second useEffect')
+  //     console.log('🦋', userInfo)
+  //     server
+  //     // .get(`https://minimize.onrender.com/collection/getlist/member/j4EiCKue5oMUn0iIKwtQJezcbF93/latest`)
+  //     // .get(`https://minimize.onrender.com/collection/getlist/member/${userInfo.uid}/latest`)
+  //     .get(`http://localhost:8080/get/email/kristine.jane.tuazon@gmail.com`)
+  //     .then((res) => {
+  //       console.log(res.data[res.data.length-1].initialList);
+  //       setSortList(res.data[res.data.length-1].initialList);
+  //     });
+  //   }
+  // }, []);
 
-  console.log(sortList), console.log(userInfo);
+console.log(localStorage);  
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -77,10 +56,7 @@ let userid = userInfo.uid
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              When an item is shown on the screen, press your{" "}
-              <KeyboardArrowRightIcon fontSize="small" /> key to add it to your
-              yes pile and <KeyboardArrowLeftIcon fontSize="small" /> to your no
-              pile.
+              Drag the card you wish to keep on the right, the cards you wish to discard on the left and those you are unsure of on the bottom.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -90,19 +66,14 @@ let userid = userInfo.uid
       </div>
       <div id="wrapper__sort">
       <Link href="/dashboard/endsort" id="link">
-           <Button
-           
-                type="submit"          
-                variant="contained"
-                sx={{ padding: 2 }}>
-                <Typography variant="h6">See your results ⭐️</Typography>
-              </Button>
-              </Link>
-
-
-
-          <TinderCards sortList={sortList}/>
-
+           <Button        
+            type="submit"          
+            variant="contained"
+            sx={{ padding: 2 }}>
+            <Typography variant="h6">See your results ⭐️</Typography>
+          </Button>
+      </Link>
+      {localStorage && <TinderCards localStorage={localStorage}/>}
       </div>
     </>
   );
