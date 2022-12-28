@@ -1,6 +1,7 @@
 //minimize.com/
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, type ReactElement} from "react";
+import { type NextPage } from "next";
 import {
   Box,
   Grid,
@@ -22,10 +23,10 @@ import {
 // import { useRouter } from "next/router";
 import SignIn from "../components/SignIn";
 
-export default function HomePage() {
+const HomePage = (): ReactElement => {
   return (
     <Grid container spacing={2} id="wrapper__homePage">
-    <Grid item  sx={3}>
+    <Grid item>
       <Box>
         <Typography variant="h3" align="center" gutterBottom> Curate, Sort, Free your Life.</Typography>
       </Box>
@@ -38,3 +39,5 @@ export default function HomePage() {
      
   );
 }
+
+export default HomePage;

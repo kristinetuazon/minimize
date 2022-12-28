@@ -1,19 +1,22 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import CssBaseline from "@mui/material/CssBaseline";
-import { CacheProvider } from "@emotion/react";
-import createEmotionCache from "../createEmotionCache";
+// import { CacheProvider, EmotionCache } from "@emotion/react";
+// import createEmotionCache from "../createEmotionCache";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "@fontsource/quattrocento";
 import "@fontsource/quattrocento-sans";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "../styles/globals.css";
 import Navbar from "../components/Navbar.js";
+import { type AppType } from "next/dist/shared/lib/utils";
 // import type { AppProps } from 'next/app';
 import { store } from '../store';
 import { Provider } from 'react-redux';
+import { AppProps } from 'next/app';
 
-const clientSideEmotionCache = createEmotionCache();
+// const clientSideEmotionCache = createEmotionCache();
+
 
 // interface Theme {
 //   status: {
@@ -29,7 +32,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 const generalTheme = createTheme({
   palette: {
-    type: "light",
+    //type: "light",
     primary: {
       main: "#7f867b",
       light: "#989E95",
@@ -55,22 +58,29 @@ const generalTheme = createTheme({
   },
 });
 
-export default function MyApp({
+interface props{
+  Component: React.ComponentType;
+  pageProps: React.ComponentType;
+  emotionCache: AppProps;
+}
+
+
+const MyApp: AppType = ({
   Component,
-  emotionCache = clientSideEmotionCache,
+  // emotionCache = clientSideEmotionCache,
   pageProps,
-}) {
-  useEffect(() => {
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
+}) => {
+  // useEffect(() => {
+  //   const jssStyles = document.querySelector("#jss-server-side");
+  //   if (jssStyles) {
+  //     jssStyles.parentElement.removeChild(jssStyles);
+  //   }
+  // }, []);
 
 
   return (
     <>
-      <CacheProvider value={emotionCache}>
+      {/* <CacheProvider value={emotionCache}> */}
         <Provider store={store}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -81,9 +91,10 @@ export default function MyApp({
           <Component {...pageProps} />
         </ThemeProvider>
         </Provider>
-      </CacheProvider>
+      {/* </CacheProvider> */}
     </>
   );
 }
 
 
+export default MyApp;
