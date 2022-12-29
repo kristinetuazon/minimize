@@ -34,7 +34,7 @@ export default function EndSort() {
               <IconButton>
               <TaskAltIcon fontSize="medium"/>
               </IconButton>
-              <Typography variant="h5"> Yes, this brings me joy ✨ </Typography>
+              <Typography variant="h6"> Yes ✨ </Typography>
             </Box>
             <Paper
               sx={{
@@ -46,7 +46,7 @@ export default function EndSort() {
                 overflow: "auto",
               }}
             >
-              <h1>Hello</h1>
+              <p>hello</p>
             </Paper>
           </Grid>
           <Grid item xs={4} sx={{ height: 1, width: 1 }}>
@@ -63,7 +63,7 @@ export default function EndSort() {
               <IconButton>
            <SyncAltIcon fontSize="medium"/>
               </IconButton>
-              <Typography variant="h5"> Sort </Typography>
+              <Typography variant="h6"> Maybe </Typography>
             </Box>
             <Paper
               sx={{
@@ -74,7 +74,7 @@ export default function EndSort() {
                 overflow: "auto",
               }}
             >
-              <h1>Hello again</h1>
+              <p>hello</p>
             </Paper>
           </Grid>
           <Grid item xs={4} sx={{ height: 1, width: 1 }}>
@@ -91,7 +91,7 @@ export default function EndSort() {
               <IconButton>
              <HighlightOffIcon fontSize="medium"/>
               </IconButton>
-              <Typography variant="h5"> No, this makes me sad 💧 </Typography>
+              <Typography variant="h6"> No💧 </Typography>
             </Box>
             <Paper
               sx={{
@@ -102,10 +102,12 @@ export default function EndSort() {
                 overflow: "auto",
               }}
             >
-              <h1>Hello again again</h1>
+              <p>hello</p>
             </Paper>
           </Grid>
+       
         </Grid>
+
       </div>
     </>
   );

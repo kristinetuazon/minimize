@@ -15,11 +15,15 @@ import {
 } from "../firebase-config";
 import Link from "next/link";
 import GoogleIcon from "@mui/icons-material/Google";
-import { grey } from "@mui/material/colors";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
-export default function SignIn() {
+// interface props {
+//   setSignUp: () => void;
+// }
+
+// const SignIn = ({setSignUp}: props): ReactElement => {
+  const SignIn = ({handleClose}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -33,17 +37,7 @@ export default function SignIn() {
 
   return (
     <>
-       <Box
-        sx={{
-          boxShadow: 3,
-          my: 1,
-          mx: 3,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-        backgroundColor={grey[50]}
-      >
+
         <br></br>
         <Typography
           component="h1"
@@ -129,13 +123,13 @@ export default function SignIn() {
             </Grid>
             <Grid item xs sx={{ mx: 1 }}>
               <Typography color="secondary" variant="body2">
-              <Link href="/register" id="link"> Do not have an account? Sign up.</Link>
+              <p onClick={handleClose} className="cursor-pointer"> Do not have an account? Sign up.</p>
               </Typography>
             </Grid>
           </Grid>
         </Box>
         <br></br>
-      </Box>
     </>
   );
 }
+export default SignIn;
