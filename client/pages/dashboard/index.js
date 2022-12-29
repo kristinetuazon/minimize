@@ -10,16 +10,17 @@ export default function Dashboard() {
     <>
       <div
         id="wrapper__dashboard"
+        className="mb-10 mt-28"
       >
-        <Grid
+        {/* <Grid
           container
           
           sx={{
             height: 1,
             width: 1,
           }}
-        >
-          <Grid item xs={8} >
+        >*/}
+          <Grid item xs={8} > 
             <Box
               sx={{
                 mx: 2,
@@ -48,7 +49,7 @@ export default function Dashboard() {
             </Paper>
           </Grid>
 
-          <Grid item xs={4}>
+          {/* <Grid item xs={4}>
             <Box
               sx={{
                 display: "flex",
@@ -72,8 +73,8 @@ export default function Dashboard() {
             >
               <List />
             </Paper>
-          </Grid>
-        </Grid>
+          </Grid> */}
+        {/* </Grid> */}
       </div>
     </>
   );

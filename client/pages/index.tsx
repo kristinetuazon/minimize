@@ -1,31 +1,22 @@
 //minimize.com/
 
 import React, { useEffect, useState, type ReactElement} from "react";
-import { type NextPage } from "next";
+// import { type NextPage } from "next";
 import {
   Box,
   Grid,
   Typography,
-  FormHelperText,
-  FormControl,
-  TextField,
 } from "@mui/material";
-// import { Button, Paper } from "@material-ui/core";
-// import {
-//   auth,
-//   signInWithEmailAndPassword,
-//   signInWithGoogle,
-// } from "../firebase-config";
-// import Link from "next/link";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import GoogleIcon from "@mui/icons-material/Google";
-// import { grey } from "@mui/material/colors";
-// import { useRouter } from "next/router";
 import SignIn from "../components/SignIn";
+import Register from "../components/Register";
 
 const HomePage = (): ReactElement => {
+  const [toggle, setToggle] = useState<Boolean>(true);
+  const handleClose = () => { setToggle(false) }
+  const handleOpen = () => { setToggle(true) }
+
   return (
-    <Grid container spacing={2} id="wrapper__homePage">
+    <Grid container spacing={2} id="wrapper__homePage" className="text-center">
     <Grid item>
       <Box>
         <Typography variant="h3" align="center" gutterBottom> Curate, Sort, Free your Life.</Typography>
@@ -33,7 +24,10 @@ const HomePage = (): ReactElement => {
     </Grid>
 
     <Grid item>
-     <SignIn/>
+ <div className="flex flex-col items-center justify-center my-5 bg-white rounded-md shadow-md">
+      {toggle? <SignIn handleClose={handleClose}/>:
+      <Register handleOpen={handleOpen}/>}
+   </div>
       </Grid>
       </Grid>
      

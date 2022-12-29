@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Link from 'next/link'
 import { Button, Paper } from "@material-ui/core";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import {
   auth,
   registerWithEmailAndPassword,
@@ -19,7 +19,9 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { grey } from '@mui/material/colors';
 import { useRouter } from "next/router";
 
-export default function Register({setRegister}) {
+
+
+const Register = ({handleOpen}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -35,20 +37,10 @@ export default function Register({setRegister}) {
     if (!name) alert("Please enter name");
     registerWithEmailAndPassword(auth, name, email, password);
   };
+
   
   return (
     <>
-      <Box
-        sx={{
-          boxShadow: 3,
-          my: 15,
-          mx: 7,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-        backgroundColor= {grey[50]}
-      >
         <br></br>
         <Typography component="h1" variant="h5" color="primary.dark">
           Sign Up
@@ -133,13 +125,14 @@ export default function Register({setRegister}) {
           <Grid container>
             <Grid item xs sx={{ mx: 2 }}>
                <Typography color="secondary" variant="body2" >
-                <Link href="/" id="link">  Already have an account? Login here. </Link>
+                <p onClick={handleOpen} className="cursor-pointer">Already have an account? Login here. </p> 
                 </Typography>
             </Grid>
           </Grid>
         </Box>
         <br></br>
-      </Box>
       </>
   )
 }
+
+export default Register;

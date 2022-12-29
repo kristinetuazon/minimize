@@ -96,7 +96,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/_app.tsx", "pages/_app.tsx"  ],
+, "pages/_app.tsx", "pages/_app.tsx", "pages/register.tsxx", "components/Register.js", "components/Register.js", "components/SignIn.js", "components/SignIn.js"  ],
   "exclude": [
     "node_modules",
       "build",
